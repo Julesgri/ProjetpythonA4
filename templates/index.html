@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How many drugs are you going to test prediciton</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: ##7FFFD4;;">
+ <div class="login">
+	<h2>Prediciton of how many drugs you've tested out of 19 result at bottom of page</h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+		<input type="number" step=0.1 name="Nscore" placeholder="Nscore" min="-3" max="3" required="required" />
+        	<input type="number" step=0.1 name="Oscore" placeholder="Oscore" min="-3" max="3" required="required" />
+		<input type="number" step=0.1 name="Escore" placeholder="Escore" min="-3" max="3" required="required"/>
+		<input type="number" step=0.1 name="Ascore" placeholder="Ascore" min="-3" max="3" required="required" />
+		<input type="number" step=0.1 name="Cscore" placeholder="Cscore" min="-3" max="3" required="required"/>
+		<input type="number" step=0.1 name="impulsive" placeholder="impulsiveness" min="-3" max="3" required="required" />
+		<input type="number" step=0.1 name="SS" placeholder="Sensation seekeness" min="-3" max="3" required="required" />
+		
+		
+		<input list="age" id="age" name="age" placeholder="age" required="required" >
+			<datalist id="age">
+				<option value="20">
+				<option value="30">
+				<option value="40">
+				<option value="50">
+				<option value ="60">
+
+			</datalist>
+		</input>
+		
+		
+		<button type="submit" onclick="doValidate();" class="block">Predict how many drugs have you tested</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+</body>
+
+</html>
